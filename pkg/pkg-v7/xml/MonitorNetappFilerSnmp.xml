@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.uptimesoftware.com/erdc/erdc erdc"
+	xmlns="http://www.uptimesoftware.com/erdc/erdc"
+	xmlns:upt="http://www.uptimesoftware.com/erdc/erdc" version="4.0" target_grouping="other">
+    <class>NetApp Filer Performance</class>
+	<exec>com.uptimesoftware.uptime.erdc.MonitorCustomScriptRunner</exec>
+    <elements>
+		<element name="process" parameter_type="input" data_type="string" gui_basic="1" range_type="0">
+			<control_options> size:40 </control_options>
+			<default_value>scripts/MonitorNetapp/MonitorNetapp.bat</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule><alphanumeric/></validation_rule>
+			<error_message><alphanumeric>required field</alphanumeric></error_message>
+			<gui_type><string/></gui_type>
+		</element>
+        <element name="snmpversion" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value>v1</default_value>
+            <short_description>SNMP Version</short_description>
+            <long_description>SNMP Version</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>v1</value>
+                    <value>v2</value>
+                    <value>v3</value>
+                </single_select>
+            </gui_type>
+        </element>
+        
+        <element name="read-community" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Community String</short_description>
+            <long_description>Community String</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <password/>
+            </gui_type>
+        </element>
+        
+        <element name="snmp-port" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value>161</default_value>
+            <short_description>SNMP Port</short_description>
+            <long_description>SNMP Port</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+
+        <element name="agent-username" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Agent Username (v3)</short_description>
+            <long_description>Agent Username (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+        <element name="auth-type" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Authentication Type (v3)</short_description>
+            <long_description>Authentication Type (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>MD5</value>
+                    <value>SHA</value>
+                </single_select>
+            </gui_type>
+        </element>
+        <element name="auth-pass" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Authentication Passphrase (v3)</short_description>
+            <long_description>Authentication Passphrase(v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <password/>
+            </gui_type>
+        </element>
+        <element name="privacy-type" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Privacy Type (v3)</short_description>
+            <long_description>Privacy Type (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>DES</value>
+                    <value>AES</value>
+                </single_select>
+            </gui_type>
+        </element>
+		<element name="privacy-pass" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Privacy Passphrase (v3)</short_description>
+            <long_description>Privacy Passphrase(v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <password/>
+            </gui_type>
+        </element>
+        <element name="dfPercentKBytesCapacity" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="pct">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Filesystem Capacity</short_description>
+            <long_description>Filesystem Capacity</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element> 
+
+        <element name="dfUsed" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="MB">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Filesystem Used</short_description>
+            <long_description>Filesystem Used</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        
+        <element name="dfPercentInodeCapacity" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="pct">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Filesystem Inode Capacity</short_description>
+            <long_description>Filesystem Inode Capacity</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>        
+        
+        <element name="dfStatus" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Filesystem Status</short_description>
+            <long_description>unmounted(1), mounted(2), frozen(3), destroying(4), creating(5), mounting(6), unmounting(7), nofsinfo(8), replaying(9), replayed(10)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="dfMirrorStatus" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Mirror Status</short_description>
+            <long_description>invalid(1), uninitialized(2), needcpcheck(3), cpcheckwait(4), unmirrored(5), normal(6), degraded(7), resyncing(8), failed(9), limbo(10)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        
+        <element name="fcpReadBytes" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>FC Read Bytes/sec</short_description>
+            <long_description>Bytes read via FC per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="fcpWriteBytes" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>FC Write Bytes/sec</short_description>
+            <long_description>Bytes written via FC per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="iscsiReadBytes" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>iSCSI Read Bytes/sec</short_description>
+            <long_description>Bytes read via iSCSI per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="iscsiWriteBytes" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>iSCSI Write Bytes/sec</short_description>
+            <long_description>Bytes written via iSCSI per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="iscsiOps" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>iSCSI Operations/sec</short_description>
+            <long_description>Number of iSCSI Ops per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="fcpOps" parameter_type="output" data_type="decimal" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>FCP Operations/sec</short_description>
+            <long_description>Number of FC Operations per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunReadBytes" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Read Bytes/sec</short_description>
+            <long_description>Bytes read via Lun per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunWriteBytes" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="B/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Write Bytes/sec</short_description>
+            <long_description>Bytes written via Lun per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunErrors" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="errors/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Errors/sec</short_description>
+            <long_description>Number of errors on LUN per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunReadOps" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="ops/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Read Ops/sec</short_description>
+            <long_description>Number of LUN Read Operations per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunWriteOps" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="ops/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Write Ops/sec</short_description>
+            <long_description>Number of LUN Write Operations per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="lunOtherOps" parameter_type="output" data_type="ranged" gui_basic="1" range_type="0" units="ops/s">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>LUN Other Ops/sec</short_description>
+            <long_description>Number of LUN Operations not read or write per second</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+
+        <element name="timer" parameter_type="output" data_type="integer" gui_basic="0"
+				range_type="0" units="ms">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Response time</short_description>
+            <long_description>Response time in ms</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+    </elements>
+    <help>When running a custom script check, note that the second parameter is always the name of the assigned host.
+	The script that's executed should output each variable on it's own line, otherwise up.time won't be able to capture the appropriate information.
+    </help>
+</uptime>

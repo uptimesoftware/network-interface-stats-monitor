@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.uptimesoftware.com/erdc/erdc erdc"
+	xmlns="http://www.uptimesoftware.com/erdc/erdc"
+	xmlns:upt="http://www.uptimesoftware.com/erdc/erdc" version="4.0" target_grouping="other">
+    <class>Network Interface Stats</class>
+    <exec>com.uptimesoftware.uptime.erdc.MonitorNetworkInterface</exec>
+    <elements>
+        <element name="snmpversion" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>SNMP Version</short_description>
+            <long_description>SNMP Version</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>v1</value>
+                    <value>v2</value>
+                    <value>v3</value>
+                </single_select>
+            </gui_type>
+        </element>
+        
+        <element name="counterBitness" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>32/64 bit SNMP Counters</short_description>
+            <long_description>Use 32 or 64 bit counters to poll device</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>32</value>
+                    <value>64</value>
+                </single_select>
+            </gui_type>
+        </element>        
+        
+        <element name="read-community" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Community String</short_description>
+            <long_description>Community String</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+        <element name="snmp-port" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value>161</default_value>
+            <short_description>SNMP Port</short_description>
+            <long_description>SNMP Port</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+
+        <element name="agent-username" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Agent Username (v3)</short_description>
+            <long_description>Agent Username (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+        <element name="auth-type" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Authentication Type</short_description>
+            <long_description>Authentication Type</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>MD5</value>
+                    <value>SHA</value>
+                </single_select>
+            </gui_type>
+        </element>
+        <element name="password" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Agent Password (v3)</short_description>
+            <long_description>Agent Password (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+        <element name="privacy-type" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Privacy Type (v3)</short_description>
+            <long_description>Privacy Type (v3)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <single_select type="dropdown">
+                    <value>DES</value>
+                    <value>AES</value>
+                </single_select>
+            </gui_type>
+        </element>
+        <element name="interfaceFilter" parameter_type="input" data_type="string" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Interface List</short_description>
+            <long_description>Interfaces to retrieve (Comma Separated)</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+		<element name="interfacesdown" parameter_type="input" data_type="string" gui_basic="1" range_type="0" units="">
+			<control_options>size:40</control_options>
+			<default_value/>
+			<short_description>Alert on Interfaces Down</short_description>
+			<long_description>Alert on Interfaces Down</long_description>
+			<validation_rule/>
+			<error_message/>
+			<gui_type>
+				<boolean/>
+			</gui_type>
+		</element>
+        <element name="bytesin" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="Bytes">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>BytesIn</short_description>
+            <long_description>Bytes In</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="bytesout" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="Bytes">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Bytes Out</short_description>
+            <long_description>Bytes Out</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="inoctets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Octets In</short_description>
+            <long_description>Octets In</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outoctets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Octets Out</short_description>
+            <long_description>Octets Out</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="inunicastpackets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Unicast Packets In</short_description>
+            <long_description>Unicast Packets In</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outunicastpackets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Unicast Packets Out</short_description>
+            <long_description>Unicast Packets Out</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="innunicastpackets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Non Unicast Packets In</short_description>
+            <long_description>Non Unicast Packets In</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outnunicastpackets" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Non Unicast Packets Out</short_description>
+            <long_description>Non Unicast Packets out</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="inerrors" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Inbound Errors</short_description>
+            <long_description>Inbound Errors</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outerrors" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Outbound Errors</short_description>
+            <long_description>Outbound Errors</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="indiscards" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Inbound Discards</short_description>
+            <long_description>Inbound Discards</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outdiscards" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Outbound Discards</short_description>
+            <long_description>Outbound Discards</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="outqueuelength" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="#">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Outbound Queue Length</short_description>
+            <long_description>Outbound Queue Length</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+        <element name="ifoperstatus" parameter_type="output" data_type="ranged" gui_basic="1"
+				range_type="0" units="">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Interface Status</short_description>
+            <long_description>Interface Status</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <string/>
+            </gui_type>
+        </element>
+        <element name="timer" parameter_type="output" data_type="integer" gui_basic="0"
+				range_type="0" units="ms">
+            <control_options>size:8</control_options>
+            <default_value/>
+            <short_description>Response time</short_description>
+            <long_description>Response time in ms</long_description>
+            <validation_rule/>
+            <error_message/>
+            <gui_type>
+                <integer/>
+            </gui_type>
+        </element>
+    </elements>
+    <help>When running a custom script check, note that the second parameter is always the name of the assigned host.
+	The script that's executed should output each variable on it's own line, otherwise up.time won't be able to capture the appropriate information.
+    </help>
+</uptime>

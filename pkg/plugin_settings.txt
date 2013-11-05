@@ -1,8 +1,0 @@
-name=NetApp Filer Performance Monitor
-version=2.0
-platforms=windows linux solaris
-description=Monitor performance on NetApp SANs.
-requiresAgentScript=false
-restartCore=false
-onUpgradeRemoveFiles=true
-onUpgradeRemoveMonitors=false
